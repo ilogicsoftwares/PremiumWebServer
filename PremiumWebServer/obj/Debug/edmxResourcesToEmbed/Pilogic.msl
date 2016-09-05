@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="pilogicModelStoreContainer" CdmEntityContainer="pilogicEntities">
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="pilogicModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="subkey" ColumnName="subkey" />
+          <ScalarProperty Name="pubkey" ColumnName="pubkey" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="direction" ColumnName="direction" />
+          <ScalarProperty Name="localphone" ColumnName="localphone" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="corpname" ColumnName="corpname" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="tokenid" ColumnName="tokenid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

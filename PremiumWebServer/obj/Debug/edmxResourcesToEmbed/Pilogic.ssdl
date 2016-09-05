@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pilogicModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="tokenid" />
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tokenid" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="corpname" Type="varchar" MaxLength="50" />
+    <Property Name="phone" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="localphone" Type="varchar" MaxLength="20" />
+    <Property Name="direction" Type="varchar" MaxLength="200" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pubkey" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="subkey" Type="nvarchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="pilogicModelStoreContainer">
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
