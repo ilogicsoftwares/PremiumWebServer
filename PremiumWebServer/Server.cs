@@ -8,10 +8,12 @@ using Newtonsoft.Json;
 using System.Reflection;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Windows;
+using PremiumWebServer.ViewModels;
 
 namespace PremiumWebServer
 {
-    class Server
+    class Server:ViewModelBase
     {
         Message MsgActual;
         //estatus de la conexion con la bd
@@ -38,7 +40,11 @@ namespace PremiumWebServer
 
         public DbServerEstatus StartDbService()
         {
-          
+            if (mysql.State==ConnectionState.Open)
+            {
+                mysql.Close();
+            }
+
             mysql.ConnectionString  = "server=" + Mysqlserver + ";user=" + Mysqldbuser + ";database=" + MysqlDb + ";port=" + Mysqldbport + ";password=" + Mysqldbkey + ";" + "pooling = false; convert zero datetime = True;";
             try
             {
@@ -46,9 +52,10 @@ namespace PremiumWebServer
                 DbConexionEstatus = DbServerEstatus.Activo;
                
             }
-            catch (Exception)
+            catch (Exception err)
             {
                 DbConexionEstatus = DbServerEstatus.Error;
+                MessageBox.Show(err.ToString(),"Error",MessageBoxButton.OK,MessageBoxImage.Error);
             }
             return DbConexionEstatus;
             // pubnub.Publish<string>(Chanel, "{Type:\"Select\"}",userCallback,errorCallback);
@@ -185,6 +192,7 @@ namespace PremiumWebServer
         public string Subkey { get; set; }
         public string Pubkey { get; set; }
         public string ServerName { get; set; }
+        
         public DbServerEstatus DbConexionEstatus { get; set; }
         public string Mysqldbuser { get;  set; }
         public string Mysqlserver { get; set; }

@@ -15,7 +15,7 @@
        
          BorderThickness="1" 
                
-        Title="Premium Web Server" Name="Loging" Height="381.276" Width="242.448" WindowStartupLocation="CenterScreen" SnapsToDevicePixels="True" Closing="MetroWindow_Closing">
+        Title="Premium Web Server" Name="Loging" Height="381.276" Width="242.448" WindowStartupLocation="CenterScreen" SnapsToDevicePixels="True" Closing="MetroWindow_Closing" Icon="Contents/PwsIcon.ico">
     <Window.DataContext>
         <vm:LogingViewModel x:Name="LoginModel"/>
     </Window.DataContext>
@@ -48,9 +48,9 @@
                 <DropShadowEffect ShadowDepth="1"/>
             </Label.Effect>
         </Label>
-        <Button x:Name="CommandConfig" Margin="1,74,0,20" Command="{Binding ConfigCommand}" Style="{DynamicResource MetroCircleButtonStyle}" ToolTip="Configurar" Grid.Row="3" Background="#66cff6" Visibility="Hidden" Grid.RowSpan="2" HorizontalAlignment="Left" Width="35" Grid.Column="1">
-            <Rectangle Width="18"
-                Height="18"
+        <Button x:Name="CommandConfig" Margin="18,74,0,10" Command="{Binding ConfigCommand}" Style="{DynamicResource MetroCircleButtonStyle}" ToolTip="Configurar" Grid.Row="3" Background="#66cff6" Visibility="Hidden" Grid.RowSpan="2" HorizontalAlignment="Left" Width="44" Grid.Column="1">
+            <Rectangle Width="25"
+                Height="25"
                 Fill= "White">
                 <Rectangle.OpacityMask>
                     <VisualBrush Stretch="Fill"
@@ -82,8 +82,8 @@
         <TextBlock x:Name="t1" Margin="0,0,29,0" Grid.Row="5" Height="18" VerticalAlignment="Top" HorizontalAlignment="Right" Width="60" Grid.Column="1" Grid.ColumnSpan="2"><Hyperlink NavigateUri="http://www.google.com" RequestNavigate="Hyperlink_RequestNavigate"><Run Text="Registrarse"/></Hyperlink></TextBlock>
         <TextBlock x:Name="t2" Margin="0,20,29,0" Grid.Row="5" RenderTransformOrigin="-0.035,0.55" Height="15" VerticalAlignment="Top" HorizontalAlignment="Right" Width="87" Grid.Column="1" Grid.ColumnSpan="2"><Hyperlink NavigateUri="http://www.google.com" RequestNavigate="Hyperlink_RequestNavigate"><Run Text="Olvido Su clave?"/></Hyperlink></TextBlock>
         <tb:TaskbarIcon x:Name="MyTask"
-       MenuActivation="RightClick"     
-      IconSource="./Contents/ILOGICICONhd.ico"
+      MenuActivation="RightClick"     
+      IconSource="./Contents/PwsIcon.ico"
       ToolTipText="Premium Web Server"
       
       DoubleClickCommand="{Binding ShowWindowCommand}"
@@ -93,7 +93,7 @@
                 <ContextMenu
          Background="LightCoral">
                     <MenuItem Header="Configurar" Command="{Binding ShowWindowCommand}" CommandParameter="{Binding principalwindow}" />
-                    <MenuItem Header="Salir"  Command="{Binding SalirCommand}" CommandParameter="{Binding principalwindow}" />
+                    <MenuItem Header="Salir"  Command="{Binding LogOutCommand}" CommandParameter="{Binding principalwindow}" />
                 </ContextMenu>
             </tb:TaskbarIcon.ContextMenu>
 
@@ -106,17 +106,8 @@
             </Label.Effect>
         </Label>
         <Label x:Name="username" Content="{Binding UserLoged.username,Mode=OneWay}" Grid.Row="3" HorizontalContentAlignment="Center" Visibility="Hidden" Margin="0,41,0,19" Grid.ColumnSpan="3"/>
-        <TextBlock x:Name="textBlock" TextWrapping="Wrap" FontSize="10" FontStretch="ExtraCondensed" TextAlignment="Center" Foreground="White" Background="#FF424242" Margin="0,43,0,0" Grid.Row="5" Grid.ColumnSpan="3"><Run Text="Este Sistema esta protegido por las Leyes "/><Run Text="I"/><Run Text="nternacion"/><Run Text="a"/><Run Text="les"/><Run Text="."/><LineBreak/><Run Text="Ilogic Softwares"/><Run FontFamily="Arial" Text="©"/><Run FontFamily="Arial" Text=" 2016"/><LineBreak/><Run/><LineBreak/><Run/></TextBlock>
-        <Button x:Name="CommandPlay" Margin="0,74,1,20" Command="{Binding GuardarEntidadCommand}" Style="{DynamicResource MetroCircleButtonStyle}" ToolTip="Iniciar/Pausar Servicio" Grid.Row="3" Background="#66cff6" Visibility="Hidden" Grid.RowSpan="2" Grid.Column="1" HorizontalAlignment="Right" Width="35">
-            <Rectangle Width="18"
-        		Height="18"
-        		Fill= "White">
-                <Rectangle.OpacityMask>
-                    <VisualBrush Stretch="Fill"
-        				Visual="{DynamicResource appbar_cloud_pause}" />
-                </Rectangle.OpacityMask>
-            </Rectangle>
-        </Button>
+        <TextBlock x:Name="textBlock" TextWrapping="Wrap" FontSize="10" FontStretch="ExtraCondensed" TextAlignment="Center" Foreground="White" Background="#FF424242" Margin="0,43,0,0" Grid.Row="5" Grid.ColumnSpan="3"><Run Text="Este Sistema esta protegido por las Leyes"/><Run Text=" de"/><Run Text=" Autor"/><Run Text=" "/><Run Text="I"/><Run Text="nternacion"/><Run Text="a"/><Run Text="les"/><Run Text="."/><LineBreak/><Run Text="Ilogic Softwares"/><Run FontFamily="Arial" Text="©"/><Run FontFamily="Arial" Text=" 2016"/><LineBreak/><Run/><LineBreak/><Run/></TextBlock>
+
 
     </Grid>
 </Controls:MetroWindow>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 
@@ -11,25 +12,36 @@ namespace PremiumWebServer.ViewModels
     class ConfigViewModel:ViewModelBase
     {
       public  RelayCommand DbConnectCommand { get; set; }
- 
+        public static Server.DbServerEstatus DbStatus;
         public ConfigViewModel()
         {
             DbConnectCommand = new RelayCommand(Conectar);
-           
+        
+                ValidTxt = DbStatus.ToString();
+          
         }
 
         private void Conectar(object obj)
         {
-            var pass = obj as PasswordBox;
-            var server = LogingViewModel.newserver;
-            server.Mysqlserver = txtMyServer;
-            server.Mysqldbuser = txtMyuser;
-            server.Mysqldbkey = pass.Password;
-            server.Mysqldbport = txtMyPort;
-            Properties.Settings.Default.DbKey = pass.Password;
-            Properties.Settings.Default.Save();
-            
-            ValidTxt = server.StartDbService().ToString();
+           // if (DbStatus != Server.DbServerEstatus.Activo)
+           // {
+                var pass = obj as PasswordBox;
+                var server = LogingViewModel.newserver;
+                server.Mysqlserver = txtMyServer;
+                server.Mysqldbuser = txtMyuser;
+                server.Mysqldbkey = pass.Password;
+                server.Mysqldbport = txtMyPort;
+                Properties.Settings.Default.DbKey = pass.Password;
+                Properties.Settings.Default.Save();
+
+                DbStatus = server.StartDbService();
+            ValidTxt = DbStatus.ToString();
+            if (DbStatus==Server.DbServerEstatus.Activo)
+            {
+                MessageBox.Show("Conexion Realizada", "Conexion", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+           
+            //  }
 
         }
 
@@ -41,7 +53,7 @@ namespace PremiumWebServer.ViewModels
             server.Mysqldbuser = Properties.Settings.Default.DbUser;
             server.Mysqldbkey = Properties.Settings.Default.DbKey;
             server.Mysqldbport = Properties.Settings.Default.DbPort;
-            server.StartDbService();
+            DbStatus= server.StartDbService();
         }
         
         public string txtMyServer
@@ -69,7 +81,7 @@ namespace PremiumWebServer.ViewModels
 
        
 
-        private string _txtMyPort;
+       
         public string txtMyPort
         {
             get { return Properties.Settings.Default.DbPort; }

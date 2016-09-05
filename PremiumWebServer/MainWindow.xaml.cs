@@ -43,6 +43,7 @@ namespace PremiumWebServer
            if (Properties.Settings.Default.State == 1)
            {
               LoginModel.MaintenedLoged();
+                ConfigViewModel.MaintainedDbConnect();
             }
         }
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)

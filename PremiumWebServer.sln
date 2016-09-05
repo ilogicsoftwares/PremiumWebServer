@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PremiumWebServer", "PremiumWebServer\PremiumWebServer.csproj", "{A0E00544-599F-4D8C-883A-DD6878303900}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Premium Web Server Setup", "Premium Web Server Setup\Premium Web Server Setup.vdproj", "{373ED1FB-9A59-4C0B-969E-9DA39888D531}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{A0E00544-599F-4D8C-883A-DD6878303900}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0E00544-599F-4D8C-883A-DD6878303900}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0E00544-599F-4D8C-883A-DD6878303900}.Release|Any CPU.Build.0 = Release|Any CPU
+		{373ED1FB-9A59-4C0B-969E-9DA39888D531}.Debug|Any CPU.ActiveCfg = Debug
+		{373ED1FB-9A59-4C0B-969E-9DA39888D531}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

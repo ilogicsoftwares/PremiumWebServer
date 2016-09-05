@@ -16,19 +16,41 @@ namespace PremiumWebServer.ViewModels
         public static MainWindow principalwindow { get; set; }
         public static Image LoaderImagen { get; set; }
         public RelayCommand IngresarCommand { get; set; }
-        public RelayCommand SalirCommand { get; set; }
+    
         public RelayCommand ShowWindowCommand { get; set; }
         public RelayCommand ConfigCommand { get; set; }
+        public RelayCommand LogOutCommand { get; set; }
         public static Server newserver { get; set; }
         public static User user; 
         private int userexist = 0;
         public LogingViewModel()
         {
             IngresarCommand = new RelayCommand(Ingresar);
-            SalirCommand = new RelayCommand(Salir);
+  
             ShowWindowCommand = new RelayCommand(ShowWindow);
             ConfigCommand = new RelayCommand(Config);
+            LogOutCommand = new RelayCommand(Logout);
            
+        }
+
+        private void Logout(object obj)
+        {
+          var x=  MessageBox.Show("Se cerrara la sesión y la aplicación", "Salir", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (x == MessageBoxResult.Yes)
+            {
+                var propiedades = Properties.Settings.Default;
+                propiedades.State = 0;
+                propiedades.LogedAs = "";
+                propiedades.DbKey = "";
+                propiedades.DbPort = "";
+                propiedades.DbServer = "";
+                propiedades.DbUser = "";
+                propiedades.pubkey = "";
+                propiedades.subkey = "";
+                propiedades.Token = "";
+                propiedades.Save();
+                App.Current.Shutdown();
+            }
         }
 
         private void Config(object obj)
@@ -46,10 +68,7 @@ namespace PremiumWebServer.ViewModels
             x.Show();
         }
 
-        private void Salir(object obj)
-        {
-            App.Current.Shutdown();
-        }
+       
 
         private void Ingresar(object obj)
         {
@@ -97,7 +116,8 @@ namespace PremiumWebServer.ViewModels
                 principalwindow.username.Visibility = Visibility.Visible;
                 principalwindow.Welcome.Visibility = Visibility.Visible;
                 principalwindow.CommandConfig.Visibility = Visibility.Visible;
-                principalwindow.CommandPlay.Visibility = Visibility.Visible;
+             
+              
                 Properties.Settings.Default.State = 1;
                 Properties.Settings.Default.LogedAs = UserLoged.username;
                 Properties.Settings.Default.pubkey = UserLoged.pubkey;
@@ -137,7 +157,8 @@ namespace PremiumWebServer.ViewModels
             principalwindow.username.Visibility = Visibility.Visible;
             principalwindow.Welcome.Visibility = Visibility.Visible;
             principalwindow.CommandConfig.Visibility = Visibility.Visible;
-            principalwindow.CommandPlay.Visibility = Visibility.Visible;
+    
+
 
             /////
             ////Server start

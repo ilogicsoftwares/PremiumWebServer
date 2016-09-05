@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Configuration.Install;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
+
+namespace PremiumWebServer
+{
+    [RunInstaller(true)]
+    public partial class installer : System.Configuration.Install.Installer
+    {
+        public installer()
+        {
+            InitializeComponent();
+        }
+        public override void Commit(IDictionary savedState)
+        {
+            base.Commit(savedState);
+
+            Directory.SetCurrentDirectory(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+            Process.Start(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\PremiumWebServer.exe");
+        }
+    }
+}
